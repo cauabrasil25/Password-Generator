@@ -15,12 +15,12 @@ function help() {
 }
 
 # Default values
-LENGTH=8
-USE_UPPERCASE=false
+LENGHT=8
+USE_UPERCASE=false
 USE_DIGITS=false
 USE_SYMBOLS=false
 
-# Set characters
+# Character set
 LOWERCASE="abcdefghijklmnopqrstuvwxyz"
 UPPERCASE="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 DIGITS="0123456789"
