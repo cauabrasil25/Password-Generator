@@ -20,6 +20,38 @@ USE_UPERCASE=false
 USE_DIGITS=false
 USE_SYMBOLS=false
 
+# Input process
+while getopts "l:udsh" opt; do
+    case $opt in 
+        l)
+            lenght=$OPTARG
+        ;;
+        u)
+            USE_UPERCASE=true
+        ;;
+        d)
+            USE_DIGITS=true
+        ;;
+        s)
+            USE_SYMBOLS=true
+        ;;
+        h)
+            help
+            exit 0
+        ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            help
+            exit 1
+        ;;
+        :)
+            echo "Option -$OPTARG requires a argument." >&2
+            help
+            exit 1
+        ;;
+    esac
+done
+
 # Character set
 LOWERCASE="abcdefghijklmnopqrstuvwxyz"
 UPPERCASE="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
