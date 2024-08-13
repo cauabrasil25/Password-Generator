@@ -25,6 +25,8 @@ UPPERCASE="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 DIGITS="0123456789"
 SYMBOLS="!@#$%^&*()-_=+[]{}|;:,.<>?/~"
 
+OPTIND=1
+
 # Analyze arguments
 while getopts "l:udsh" opt; do
    case $opt in
