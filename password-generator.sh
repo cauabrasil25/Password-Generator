@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Help message
-help() {
+function help() {
  echo "Welcome to password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN"
  echo "Use: ./password-generator.sh [OPTIONS]"
  echo "Options:"
@@ -23,28 +23,28 @@ USE_SYMBOLS=false
 # Analyze arguments
 while getopts "l:udsh" opt; do
    case ${opt} in
-   l )
+       l)
           LENGTH=$OPTARG
           ;;
-   u )
+       u)
           USE_UPPERCASE=true
           ;;
-   d )      
+       d)      
           USE_DIGITS=true
           ;;
-   s )
+       s)
           USE_SYMBOLS=true
           ;;
-   h )
+       h)
           help
           exit 0
           ;;
-   \? )   
+       \?)   
           echo "Invalid option: -$OPTARG" >&2
           help  
           exit 1
           ;;
-    :)
+       :)
          echo "Option -$OPTARG requires an argument" >&2
          help
          exit 1
@@ -75,7 +75,7 @@ if [ "$USE_SYMBOLS" = true ]; then
 fi
 
 # Generate password 
-PASSWORD=$(cat /dev/urandom | tr -dc "$CHARSET" | head $LENGTH)
+PASSWORD=$(tr -dc </dev/urandom | head -c $LENGTH)
 
 # Exhibit pasword
 echo "Your generated password: $PASSWORD"
