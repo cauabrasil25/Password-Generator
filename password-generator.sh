@@ -1,17 +1,16 @@
 #!/bin/sh
 
-# Help message
 function help() {
- echo "Welcome to password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN"
- echo "Use: ./password-generator.sh [OPTIONS]"
- echo "Options:"
- echo "-l [lenght] : password lenght"
- echo "-u          : include uppercase letters"
- echo "-d          : include numbers"
- echo "-s          : include symbols"
- echo "-h          : shows this help message"
- echo ""
- echo "The default behavior of the script is to generate a password of 8 lowercase characters."
+  echo "Welcome to password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN"
+  echo "Use: ./password-generator.sh [OPTIONS]"
+  echo "Options:"
+  echo "-l [length] : password length"  
+  echo "-u          : include uppercase letters"
+  echo "-d          : include numbers"
+  echo "-s          : include symbols"
+  echo "-h          : shows this help message"
+  echo ""
+  echo "The default behavior of the script is to generate a password of 8 lowercase characters."
 }
 
 # Default values
@@ -20,9 +19,15 @@ USE_UPPERCASE=false
 USE_DIGITS=false
 USE_SYMBOLS=false
 
+# Set characters
+LOWERCASE="abcdefghijklmnopqrstuvwxyz"
+UPPERCASE="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+DIGITS="0123456789"
+SYMBOLS="!@#$%^&*()-_=+[]{}|;:,.<>?/~"
+
 # Analyze arguments
 while getopts "l:udsh" opt; do
-   case ${opt} in
+   case $opt in
        l)
           LENGTH=$OPTARG
           ;;
@@ -53,29 +58,28 @@ while getopts "l:udsh" opt; do
     esac
 done
 
-# Set characters
-LOWERCASE="abcdefghijklmnopqrstuvwxyz"
-UPPERCASE="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-DIGITS="0123456789"
-SYMBOLS="!@#$%^&*()-_=+[]{}|;:,.<>?/~"
-
 # Build the list of allowed characters 
 CHARSET="$LOWERCASE"
 
 if [ "$USE_UPPERCASE" = true ]; then
-   CHARSET+="$UPPERCASE"
+   CHARSET="$CHARSET$UPPERCASE"
 fi
 
 if [ "$USE_DIGITS" = true ]; then
-   CHARSET+="$DIGITS"
+   CHARSET="$CHARSET$DIGITS"
 fi
 
 if [ "$USE_SYMBOLS" = true ]; then
-   CHARSET+="$SYMBOLS"
+   CHARSET="$CHARSET$SYMBOLS"
+fi
+
+if [ -z "$CHARSET" ]; then
+  echo "No character set specified. At least one option (-u, -d, -s) must be used."
+  exit 1
 fi
 
 # Generate password 
-PASSWORD=$(tr -dc </dev/urandom | head -c $LENGTH)
+PASSWORD=$(tr -dc "$CHARSET" </dev/urandom | head -c $LENGTH)
 
-# Exhibit pasword
+# Exhibit password
 echo "Your generated password: $PASSWORD"
