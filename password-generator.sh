@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Help message
-help() {
+function help() {
  echo "Welcome to password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN"
  echo "Use: ./password-generator.sh [OPTIONS]"
  echo "Options:"
