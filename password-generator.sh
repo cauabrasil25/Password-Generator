@@ -73,3 +73,9 @@ fi
 if [ "$USE_SYMBOLS" = true ]; then
    CHARSET+="$SYMBOLS"
 fi
+
+# Generate password 
+PASSWORD=$(cat /dev/urandom | tr -dc "$CHARSET" | head $LENGTH)
+
+# Exhibit pasword
+echo "Your generated password: $PASSWORD"
