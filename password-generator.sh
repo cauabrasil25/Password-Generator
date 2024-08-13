@@ -23,7 +23,7 @@ USE_SYMBOLS=false
 LOWERCASE="abcdefghijklmnopqrstuvwxyz"
 UPPERCASE="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 DIGITS="0123456789"
-SYMBOLS="!@#$%^&*()-_=+[]{}|;:,.<>?/~"
+SYMBOLS="!@#$%^&*?/~"
 
 OPTIND=1
 
