@@ -9,6 +9,9 @@ help() {
   echo "-d          : Include numbers"
   echo "-s          : Include symbols"
   echo "-h          : Shows this help message"
+  echo "-o          : Save the generated password on a file"
+  echo "-n [NAME]   : Add a name to the generated password"
+  echo "-p          : Exhibit the generated passwords"
   echo ""
   echo "The default behavior of the script is to generate a password of 8 lowercase characters."
 }
