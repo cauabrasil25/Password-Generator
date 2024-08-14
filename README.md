@@ -7,13 +7,29 @@ Having the ability to generate passwords of different sizes, which can include u
 >Your generated password: sdafglsl
 
 ~$ ./Password_Generator -h
->Welcome to password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN
+    Welcome to password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN
+    Use: ./password-generator.sh [OPTIONS]
+    Options:
+    -l [length] : password length
+    -u : include uppercase letters
+    -d : include numbers
+    -s : include symbols
+    -h : shows this help message
+
+    The default behavior of the script is to generate a password of 8 lowercase characters.>Welcome to password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN
+>
 >Use: ./password-generator.sh [OPTIONS]
+>
 >Options:
+>
 > -l [lenght] : password lenght
+>
 > -u          : include uppercase letters
+>
 > -d          : include numbers
+>
 > -s          : include symbols
+>
 > -h          : shows this help message
 >
 >The default behavior of the script is to generate a password of 8 lowercase characters.
