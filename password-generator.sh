@@ -16,11 +16,19 @@ help() {
   echo "The default behavior of the script is to generate a password of 8 lowercase characters."
 }
 
+# Show all passwords
+show_txt() {
+   cat passwords.txt
+}
+
 # Default values
 LENGTH=8
 USE_UPPERCASE=false
 USE_DIGITS=false
 USE_SYMBOLS=false
+SAVE=false
+SHOW_PASSWORDS=false
+NAME=""
 
 # Set characters
 LOWERCASE="abcdefghijklmnopqrstuvwxyz"
@@ -31,30 +39,39 @@ SYMBOLS="!@#$%^&*()_=+[]{}|;:,.<>?/~"
 OPTIND=1
 
 # Analyze arguments
-while getopts "l:udsh" opt; do
+while getopts "l:n:opudsh" opt; do
    case $opt in
-       l)
+      l)
           LENGTH=$OPTARG
           ;;
-       u)
+      u)
           USE_UPPERCASE=true
           ;;
-       d)
+      d)
           USE_DIGITS=true
           ;;
-       s)
+      s)
           USE_SYMBOLS=true
           ;;
-       h)
+      h)
           help
           exit 0
           ;;
-       \?)
+      o)
+         SAVE=true
+         ;;
+      n)       
+         NAME=$OPTARG
+         ;;
+      p)
+         SHOW_PASSWORDS=true
+         ;;
+      \?)
           echo "Invalid option: -$OPTARG" >&2
           help
           exit 1
           ;;
-       :)
+      :)
          echo "Option -$OPTARG requires an argument" >&2
          help
          exit 1
@@ -88,3 +105,7 @@ PASSWORD=$(tr -dc "$CHARSET" </dev/urandom | head -c $LENGTH)
 
 # Exhibit password
 echo "Your generated password: $PASSWORD"
+
+if [ "$SHOW_PASSWORDS" = true ]; then 
+   show_txt
+fi
