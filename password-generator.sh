@@ -1,7 +1,7 @@
 #!/bin/sh
 
 help() {
-  echo "Welcome to the password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN"
+  echo "Welcome to the password-generator! Version 2.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN"
   echo "Use: ./password-generator.sh [OPTIONS]"
   echo "Options:"
   echo "-l [LENGHT] : Password length"
