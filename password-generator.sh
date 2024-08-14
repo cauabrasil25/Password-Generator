@@ -1,14 +1,14 @@
 #!/bin/sh
 
 help() {
-  echo "Welcome to password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN"
+  echo "Welcome to the password-generator! Version 1.0, (c) 2024, Cauã and Alexandre, DIMAp, UFRN"
   echo "Use: ./password-generator.sh [OPTIONS]"
   echo "Options:"
-  echo "-l [length] : password length"  
-  echo "-u          : include uppercase letters"
-  echo "-d          : include numbers"
-  echo "-s          : include symbols"
-  echo "-h          : shows this help message"
+  echo "-l [LENGHT] : Password length"
+  echo "-u          : Include uppercase letters"
+  echo "-d          : Include numbers"
+  echo "-s          : Include symbols"
+  echo "-h          : Shows this help message"
   echo ""
   echo "The default behavior of the script is to generate a password of 8 lowercase characters."
 }
@@ -36,7 +36,7 @@ while getopts "l:udsh" opt; do
        u)
           USE_UPPERCASE=true
           ;;
-       d)      
+       d)
           USE_DIGITS=true
           ;;
        s)
@@ -46,9 +46,9 @@ while getopts "l:udsh" opt; do
           help
           exit 0
           ;;
-       \?)   
+       \?)
           echo "Invalid option: -$OPTARG" >&2
-          help  
+          help
           exit 1
           ;;
        :)
@@ -80,7 +80,7 @@ if [ -z "$CHARSET" ]; then
   exit 1
 fi
 
-# Generate password 
+# Generate password
 PASSWORD=$(tr -dc "$CHARSET" </dev/urandom | head -c $LENGTH)
 
 # Exhibit password
