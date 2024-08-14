@@ -16,11 +16,6 @@ help() {
   echo "The default behavior of the script is to generate a password of 8 lowercase characters."
 }
 
-# Show all passwords
-show_txt() {
-   cat passwords.txt
-}
-
 # Default values
 LENGTH=8
 USE_UPPERCASE=false
@@ -106,6 +101,7 @@ PASSWORD=$(tr -dc "$CHARSET" </dev/urandom | head -c $LENGTH)
 # Exhibit password
 echo "Your generated password: $PASSWORD"
 
+# Show all passwords
 if [ "$SHOW_PASSWORDS" = true ]; then 
-   show_txt
+   cat passwords.txt
 fi
