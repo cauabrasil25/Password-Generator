@@ -21,6 +21,12 @@ Having the ability to generate passwords of different sizes, which can include u
 >
 > -h          : shows this help message
 >
+> -o          : Save the generated password on a file
+>
+> -n [NAME]   : Add a name to the generated password
+>
+> -p          : Exhibit the generated passwords
+>
 >The default behavior of the script is to generate a password of 8 lowercase characters.
 
 ~$ ./password_generator.sh -s -l 4
