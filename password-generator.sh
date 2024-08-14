@@ -98,8 +98,19 @@ fi
 # Generate password
 PASSWORD=$(tr -dc "$CHARSET" </dev/urandom | head -c $LENGTH)
 
+#Save named password in password.txt
+if [ -n "$NAME" ]; then
+   PASSWORD="${NAME}: ${PASSWORD}"
+fi
+
 # Exhibit password
 echo "Your generated password: $PASSWORD"
+
+# Save the password to file if required
+if [ "$SAVE" = true ]; then
+   echo "$PASSWORD" >> passwords.txt
+   echo "Password saved to passwords.txt"
+fi
 
 # Show all passwords
 if [ "$SHOW_PASSWORDS" = true ]; then 
